@@ -1,6 +1,6 @@
 <?php
 
-!isset($_SESSION['admin']) ? header("location:user.php") : ""; 
+//!isset($_SESSION['admin']) ? header("location:user.php") : ""; 
 
 $hostname = "localhost";
 $username = "root";

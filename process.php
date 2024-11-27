@@ -1,11 +1,30 @@
 <?php
+include "conn.php";
 
-include "crud.php";
 
 
-if($_POST['pass'] == $_POST['cpass']){
-     $insert = c($conn,cheak($_POST['name']),cheak($_POST['lname']),cheak($_POST['tel']),cheak($_POST['date']),cheak($_POST['mail']),cheak($_POST['username']),cheak($_POST['pass']));
-};
+$name = cheak($_POST['name']);
+$lname = cheak($_POST['lname']);
+$mail = cheak($_POST['mail']);
+$date = cheak($_POST['date']);
+$tel = cheak($_POST['tel']);
+$username = cheak($_POST['username']);
+$password = cheak($_POST['pass']);
+//$status = cheak($_POST['']);
+//$sex = cheak($_POST['']);
+
+
+
+$sqli = "INSERT INTO `member`(`id`, `fneme`, `lneme`, `e-mail`, `date`, `tal`, `username`, `password`, `status`, `sex`) VALUES (null,'$name','$lname','$mail','$date','$tel','$username','$password',0,'man')";
+$query = mysqli_query($conn,$sqli);
+if($query){
+     echo "ok";
+}else{
+     echo "not";
+}
+
+
+
 
 
 function cheak($data){
