@@ -1,3 +1,16 @@
+<?php
+session_start();
+include "conn.php";
+
+
+if(isset($_SESSION['login'])){
+     $id = $_SESSION['login'];
+     $sqli = mysqli_query($conn,"SELECT * FROM `member` WHERE id = '$id'");
+     $row = mysqli_fetch_assoc($sqli);
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,8 +26,12 @@
 <body>
      <div class="bg-secondary p-2">
           <div class="container text-end">
-               <b class="btn btn-outline-warning">ออกจากระบบ</b>
+          <?php if(isset($_SESSION['login'])){ ?>
+               <a href="logout.php" class="btn btn-outline-warning">ออกจากระบบ</a>
+          <?php   }else{  ?>
                <a href="login.php"  class="text-dark">เข้าสู่ระบบ</a>| <a href="rejister.php" class="text-dark">สมัครสมาชิก</a>
+
+               <?php } ?>
 
           </div>
      </div>

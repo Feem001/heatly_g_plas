@@ -1,3 +1,33 @@
+<?php
+session_start();
+include "conn.php";
+
+$row = array( 
+     "fneme"=>" ",
+     "lneme"=>" ",
+     "date"=>" ",
+     "tal"=>" ",
+     "e-mail"=>" ",
+     "username"=>" ",
+     "password"=>"",
+
+);
+
+
+if(isset($_SESSION['login'])){
+     $id = $_SESSION['login'];
+     $sql = "SELECT * FROM `member` WHERE id = '$id'";
+     $query = mysqli_query($conn,$sql);
+     $row = mysqli_fetch_assoc($query); 
+
+}
+
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,39 +41,39 @@
      <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-     <?php include "nav.php" ?>
 <div class="container col-6 ">
+     <button  class="btn btn-info m-2" onclick="history.back()">กลับ</button>
      <div class="card p-3  border border-4 border-secondary  mt-3 shadow-lg">
           <form action="" method="post" >
                <h2 class="text-center">แก้ไขข้อมูล</h2>
           <label for="">ชื่อ-นามสกุล</label>
                <div class="input-group">
-                    <input type="text" class="form-control shadow-sm" name="name" placeholder="ชื่อ">
-                    <input type="text" class="form-control  shadow-sm " name="lname" placeholder="นามสกุล">
+                    <input type="text" class="form-control shadow-sm" value="<?php echo $row['fneme'] ?> "  name="name" placeholder="ชื่อ">
+                    <input type="text" class="form-control  shadow-sm " value="<?php echo $row['lneme'] ?> "  name="lname" placeholder="นามสกุล">
                </div>
                <div class="col-6">
                     <label for="">วันเกิด</label>
-                    <input type="date" class="form-control  shadow-sm" name="date">
+                    <input type="date" class="form-control  shadow-sm" name="date" value="<?php echo $row['date'] ?> ">
                </div>
                
                <div class="">
                     <label for="">เบอร์</label>
-                    <input type="tel" class="form-control  shadow-sm" name="tel">
+                    <input type="tel" class="form-control  shadow-sm" name="tel" value="<?php echo $row['tal'] ?> ">
                </div>
                
                <div class="">
                     <label for="">E-mail</label>
-                    <input type="e-mail" class="form-control  shadow-sm" name="mail">
+                    <input type="e-mail" class="form-control  shadow-sm" name="mail" value="<?php echo $row['e-mail'] ?> ">
                </div>
                
                <div class="">
                     <label for="">ชื่อผู่ใช้</label>
-                    <input type="text" class="form-control  shadow-sm" name="username">
+                    <input type="text" class="form-control  shadow-sm" name="username" value="<?php echo $row['username'] ?> ">
                </div>
                
                <div class="">
                     <label for="">รหัสผ่าน</label>
-                    <input type="password" class="form-control  shadow-sm" name="pass">
+                    <input type="password" class="form-control  shadow-sm" name="pass" value="<?php echo $row['password'] ?>">
                </div>
                <button type="submit" class="btn btn-danger w-100 mt-3  shadow-lg">อัปเดต</button>
           </form>

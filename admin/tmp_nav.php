@@ -13,5 +13,6 @@
                <li class="nav-item"><a href="admin_product.php" class="nav-link   text-dark">จัดการสินค้า</a></li>
                <li class="nav-item"><a href="alert.php" class="nav-link  text-dark">จัดการแจ้งเตือน</a></li>
           </ul>
+          <small><a href="../logout.php" >ออกจากระบบ</a></small>
           </div>
      </nav>

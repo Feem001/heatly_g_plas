@@ -1,8 +1,17 @@
+<?php 
+session_start();
+?>
 
-     <div class="bg-secondary p-2">
+
+  
+  <div class="bg-secondary p-2">
           <div class="container text-end">
-               <b class="btn btn-outline-warning">ออกจากระบบ</b>
+          <?php if(isset($_SESSION['login'])){ ?>
+               <a href="logout.php" class="btn btn-outline-warning">ออกจากระบบ</a>
+          <?php   }else{  ?>
                <a href="login.php"  class="text-dark">เข้าสู่ระบบ</a>| <a href="rejister.php" class="text-dark">สมัครสมาชิก</a>
+
+               <?php } ?>
           </div>
      </div>
     <div class="">

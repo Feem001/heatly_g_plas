@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "conn.php";
 
 
@@ -10,17 +11,22 @@ $date = cheak($_POST['date']);
 $tel = cheak($_POST['tel']);
 $username = cheak($_POST['username']);
 $password = cheak($_POST['pass']);
-//$status = cheak($_POST['']);
-//$sex = cheak($_POST['']);
+$status = 0;
+$sex = 'man';
 
 
 
-$sqli = "INSERT INTO `member`(`id`, `fneme`, `lneme`, `e-mail`, `date`, `tal`, `username`, `password`, `status`, `sex`) VALUES (null,'$name','$lname','$mail','$date','$tel','$username','$password',0,'man')";
+$sqli = "INSERT INTO `member`(`id`, `fneme`, `lneme`, `e-mail`, `date`, `tal`, `username`, `password`, `status`, `sex`) VALUES (null,'$name','$lname','$mail','$date','$tel','$username','$password',$status,'$sex')";
 $query = mysqli_query($conn,$sqli);
+
 if($query){
-     echo "ok";
+     $sql = "SELECT * FROM `member`";
+     $q = mysqli_query($conn,$sql);
+     $row = mysqli_fetch_assoc($q);
+     $_SESSION['login'] = $row['id'];
+     header("location:user.php");
 }else{
-     echo "not";
+     header("location:rejister.php");
 }
 
 
