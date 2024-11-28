@@ -5,7 +5,7 @@
      </div>
      <nav class="navbar  navbar-brand shadow">
           <div class="container">
-               <h1>Admin</h1>
+               <a href="../user.php"><h1>Admin</h1></a>
           <ul class="nav">
                <li class="nav-item"><a href="admin_index.php" class="nav-link  text-dark">รายสรุป</a></li>
                <li class="nav-item"><a href="admin_user.php" class="nav-link   text-dark">จัดการผู้ใช้</a></li>

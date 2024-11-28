@@ -9,6 +9,12 @@ if(isset($_SESSION['login'])){
      $row = mysqli_fetch_assoc($sqli);
 }
 
+$all = mysqli_query($conn,"SELECT * FROM `alert`");
+
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -64,7 +70,12 @@ if(isset($_SESSION['login'])){
           <div class="card mt-2 text-center shadow-lg  text-center">
           <b>....ประชาสัมพันธ์...</b>
           <hr>
-          <marquee behavior="scroll" direction="up" height="350px"><p class="me-3">ดูแลสูขภาพ</p></marquee>
+
+          <marquee behavior="scroll" direction="up" height="350px">
+          <?php  while($row = mysqli_fetch_assoc($all)){ ?>
+          <p class="me-3"><?php echo $row['alert'] ?></p>
+          <?php  } ?>
+          </marquee>
           </div>
           
      </div>  

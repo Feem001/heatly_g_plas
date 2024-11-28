@@ -1,3 +1,15 @@
+<?php
+include "../conn.php";
+
+if(isset($_POST['alert'])){
+     $alert = $_POST['alert'];
+     $int = mysqli_query($conn,"INSERT INTO `alert`(`id`, `alert`) VALUES (null,'$alert')");
+}
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,10 +27,10 @@
     <div class="container col-6 mt-3">
      <div class="card p-3">
      <h2 class="text-center">ประชาสัมพันธ์บทความ</h2>
-          <form action="" method="post" enctype="miltipart/form-data">
+          <form action="alert.php" method="post" enctype="miltipart/form-data">
                <div class="">
                     <label for="">บทความ</label>
-                    <textarea name="blog" id="" rows="10"   class="form-control"></textarea>
+                    <textarea name="alert" id="" rows="10"   class="form-control" required ></textarea>
                </div>
                <button type="submit" class="btn btn-danger w-100 mt-2" >เพิ่มแจ้งเตือน</button>
 
